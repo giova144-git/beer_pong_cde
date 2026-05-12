@@ -55,35 +55,42 @@ export default function App() {
   }
 
   return (
-    <div className="relative min-h-screen flex items-center justify-center overflow-hidden px-4 py-14">
+    <div className="relative min-h-screen flex items-center justify-center px-4 py-14">
 
       {/* ── Fondo oscuro base — siempre visible detrás de todo ── */}
       <div className="fixed inset-0" style={{ background: '#0e1a0f', zIndex: -2 }} />
 
       {/* ── Orbes de color Codea ── */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      <div className="fixed inset-0 pointer-events-none" style={{ zIndex: -1 }}>
         {/* orbe grande superior-izquierda */}
         <div
-          className="absolute -top-32 -left-32 w-96 h-96 rounded-full"
+          className="absolute rounded-full"
           style={{
-            background: 'radial-gradient(circle, rgba(61,94,58,0.55) 0%, transparent 70%)',
-            filter: 'blur(40px)',
+            top: '-20%', left: '-20%',
+            width: '70vmax', height: '70vmax',
+            background: 'radial-gradient(circle, rgba(61,94,58,0.55) 0%, transparent 65%)',
+            filter: 'blur(60px)',
           }}
         />
-        {/* orbe mediano inferior-derecha */}
+        {/* orbe grande inferior-derecha */}
         <div
-          className="absolute -bottom-24 -right-24 w-80 h-80 rounded-full"
+          className="absolute rounded-full"
           style={{
-            background: 'radial-gradient(circle, rgba(78,120,72,0.45) 0%, transparent 70%)',
-            filter: 'blur(48px)',
+            bottom: '-20%', right: '-20%',
+            width: '65vmax', height: '65vmax',
+            background: 'radial-gradient(circle, rgba(78,120,72,0.45) 0%, transparent 65%)',
+            filter: 'blur(70px)',
           }}
         />
         {/* acento central sutil */}
         <div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full"
+          className="absolute rounded-full"
           style={{
-            background: 'radial-gradient(circle, rgba(46,74,44,0.30) 0%, transparent 70%)',
-            filter: 'blur(60px)',
+            top: '50%', left: '50%',
+            transform: 'translate(-50%, -50%)',
+            width: '50vmax', height: '50vmax',
+            background: 'radial-gradient(circle, rgba(46,74,44,0.28) 0%, transparent 65%)',
+            filter: 'blur(80px)',
           }}
         />
       </div>
