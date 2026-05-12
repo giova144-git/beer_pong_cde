@@ -124,7 +124,7 @@ export default function App() {
           <div className="text-center mb-7">
             <h1 className="text-white text-xl font-bold tracking-tight leading-snug">
               Meet &amp; Greet
-              <span className="block text-white/50 text-base font-normal mt-0.5">Codea × UNIMET</span>
+              <span className="block text-white/50 text-base font-normal mt-0.5">Codea × CDE</span>
             </h1>
             <div className="mt-3 h-px w-14 mx-auto rounded-full" style={{ background: 'rgba(78,120,72,0.6)' }} />
             <p className="mt-2.5 text-white/40 text-xs">Registra tu asistencia al evento</p>
