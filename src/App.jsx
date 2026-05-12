@@ -57,18 +57,6 @@ export default function App() {
   return (
     <div className="relative min-h-screen flex items-center justify-center px-4 py-14">
 
-      {/* ── Fondo con nebulosas ── */}
-      <div
-        className="fixed inset-0 pointer-events-none"
-        style={{
-          zIndex: 0,
-          background: `
-            radial-gradient(ellipse 70% 60% at -5% -5%, rgba(61,94,58,0.60) 0%, transparent 65%),
-            radial-gradient(ellipse 65% 55% at 105% 108%, rgba(78,120,72,0.50) 0%, transparent 65%),
-            #0e1a0f
-          `,
-        }}
-      />
 
       {/* ── Card principal ── */}
       <div className="relative z-10 w-full max-w-sm">
