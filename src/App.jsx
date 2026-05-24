@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { supabase } from './lib/supabase';
 import './index.css';
 
+// Importamos el logo directamente para que funcione en GitHub Pages
+import logoClub from './logo_club.svg'; 
+
 const MAX_TEAMS = 16;
 
 const normalizeCedula = (value) => value.replace(/\D/g, '').slice(0, 8);
@@ -20,7 +23,7 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
-  // NUEVOS ESTADOS para controlar el flujo de pantallas y caché
+  // Estados para controlar el flujo de pantallas y caché
   const [isSuccess, setIsSuccess] = useState(false);
   const [alreadyRegistered, setAlreadyRegistered] = useState(false);
   const [registeredTeamName, setRegisteredTeamName] = useState('');
@@ -28,7 +31,7 @@ function App() {
   useEffect(() => {
     fetchSpots();
     
-    // COMPROBACIÓN DE CACHÉ: Ver si el usuario ya se registró antes
+    // COMPROBACIÓN DE CACHÉ
     const hasRegistered = localStorage.getItem('beerpong_registered');
     const savedTeam = localStorage.getItem('beerpong_team_name');
     
@@ -134,7 +137,7 @@ function App() {
       localStorage.setItem('beerpong_team_name', teamName.trim());
       
       setRegisteredTeamName(teamName.trim());
-      setIsSuccess(true); // Activa la pantalla de éxito
+      setIsSuccess(true);
 
       // Limpieza de formulario
       setTeamName('');
@@ -156,7 +159,8 @@ function App() {
         
         <header className="header-section">
           <div className="logo-container">
-            <img src="/logo_club.svg" alt="Club Logo" className="logo" />
+            {/* Usamos la variable importada del logo */}
+            <img src={logoClub} alt="Club Logo" className="logo" />
             <span className="club-name">CLUB DE EMPRENDIMIENTO</span>
           </div>
           <h1 className="title">Beer Pong <span className="highlight">CDE</span></h1>
@@ -166,7 +170,6 @@ function App() {
           </div>
         </header>
 
-        {/* REGLA 1: SI YA SE REGISTRÓ EN ESTE DISPOSITIVO ANTES */}
         {alreadyRegistered ? (
           <div className="status-screen already-registered-view">
             <div className="icon-wrapper alert-icon">ℹ️</div>
@@ -180,10 +183,8 @@ function App() {
           </div>
         ) : 
         
-        /* REGLA 2: PANTALLA DE ÉXITO TRAS EL REGISTRO ACTUAL */
         isSuccess ? (
           <div className="status-screen success-view">
-            {/* Checkmark animado en SVG */}
             <div className="success-checkmark">
               <div className="check-icon">
                 <span className="icon-line line-tip"></span>
@@ -204,7 +205,6 @@ function App() {
           </div>
         ) : 
         
-        /* REGLA 3: PANTALLA DE TORNEO LLENO */
         isFull ? (
           <div className="status-screen full-view">
             <h2>¡Torneo Lleno!</h2>
@@ -212,7 +212,6 @@ function App() {
           </div>
         ) : 
         
-        /* REGLA 4: FORMULARIO POR DEFECTO */
         (
           <form onSubmit={handleSubmit} className="glass-form">
             <div className="players-grid">
@@ -222,7 +221,7 @@ function App() {
                   type="text"
                   value={teamName}
                   onChange={(e) => setTeamName(e.target.value)}
-                  placeholder="Ej. Low Cortisol Team"
+                  placeholder="Ej. Los Reyes del Vaso"
                   required
                 />
               </div>
@@ -245,7 +244,6 @@ function App() {
             </div>
 
             <div className="players-grid">
-              {/* Jugador 1 */}
               <div className="player-card">
                 <h3>Jugador 1</h3>
                 <div className="input-group">
@@ -265,7 +263,6 @@ function App() {
                 </div>
               </div>
 
-              {/* Jugador 2 */}
               <div className="player-card">
                 <h3>Jugador 2</h3>
                 <div className="input-group">

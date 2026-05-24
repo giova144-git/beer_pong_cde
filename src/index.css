@@ -1,4 +1,3 @@
-/* Importar una fuente elegante y moderna */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
 
 * {
@@ -9,7 +8,6 @@
 }
 
 body {
-  /* Fondo inspirado en los colores cálidos del flyer */
   background: linear-gradient(135deg, #fceabb 0%, #f8b500 100%);
   min-height: 100vh;
   display: flex;
@@ -23,7 +21,6 @@ body {
   max-width: 850px;
 }
 
-/* EFECTO GLASSMORPHISM */
 .glass-card {
   background: rgba(255, 255, 255, 0.25);
   border-radius: 24px;
@@ -35,7 +32,6 @@ body {
   color: #1a1a1a;
 }
 
-/* CABECERA */
 .header-section {
   text-align: center;
   margin-bottom: 30px;
@@ -59,14 +55,14 @@ body {
   font-size: 0.85rem;
   letter-spacing: 2px;
   font-weight: 600;
-  color: #0b2e59; /* Azul oscuro del flyer */
+  color: #0b2e59;
   text-transform: uppercase;
 }
 
 .title {
   font-size: 3.5rem;
   font-weight: 800;
-  color: #e62b2b; /* Rojo de las letras de Beer Pong */
+  color: #e62b2b;
   text-transform: uppercase;
   line-height: 1;
   margin-bottom: 15px;
@@ -76,7 +72,6 @@ body {
   color: #1a1a1a;
 }
 
-/* BADGE DE CUPOS */
 .spots-badge {
   display: inline-block;
   background: rgba(255, 255, 255, 0.6);
@@ -94,7 +89,6 @@ body {
   border-color: #ff4d4d;
 }
 
-/* GRID DE JUGADORES */
 .players-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -123,7 +117,6 @@ body {
   padding-bottom: 5px;
 }
 
-/* INPUTS */
 .input-group {
   margin-bottom: 15px;
   display: flex;
@@ -181,7 +174,6 @@ body {
   background: transparent;
 }
 
-/* TEXTOS Y ALERTAS */
 .disclaimer-text {
   font-size: 0.85rem;
   text-align: center;
@@ -204,28 +196,9 @@ body {
   border: 1px solid rgba(255, 77, 77, 0.3);
 }
 
-.alert.success {
-  background: rgba(76, 175, 80, 0.2);
-  color: #2e7d32;
-  border: 1px solid rgba(76, 175, 80, 0.3);
-}
-
-.full-message {
-  text-align: center;
-  padding: 40px;
-  background: rgba(255, 255, 255, 0.4);
-  border-radius: 16px;
-}
-
-.full-message h2 {
-  color: #e62b2b;
-  margin-bottom: 10px;
-}
-
-/* BOTÓN */
 .submit-btn {
   width: 100%;
-  background: #e62b2b; /* Rojo vivo */
+  background: #e62b2b;
   color: white;
   border: none;
   padding: 16px;
@@ -249,4 +222,145 @@ body {
   cursor: not-allowed;
   box-shadow: none;
   transform: none;
+}
+
+/* PANTALLAS DE ESTADO */
+.status-screen {
+  text-align: center;
+  padding: 30px 10px;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  animation: fadeIn 0.5s ease forwards;
+}
+
+.status-screen h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  color: #0b2e59;
+}
+
+.status-message {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: #222;
+  margin-bottom: 25px;
+}
+
+.team-highlight {
+  color: #e62b2b;
+  font-weight: 800;
+}
+
+.success-disclaimer-box {
+  background: rgba(255, 255, 255, 0.7);
+  border-left: 5px solid #276221;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: left;
+  max-width: 600px;
+  margin: 0 auto;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.success-disclaimer-box p {
+  font-size: 0.95rem;
+  color: #333;
+  line-height: 1.6;
+}
+
+.icon-wrapper.alert-icon {
+  font-size: 3.5rem;
+  background: rgba(11, 46, 89, 0.1);
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  margin: 0 auto;
+}
+
+/* ANIMACIÓN DEL CHECKMARK */
+.success-checkmark {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto;
+}
+
+.success-checkmark .check-icon {
+  width: 80px;
+  height: 80px;
+  position: relative;
+  border-radius: 50%;
+  box-sizing: content-box;
+  border: 4px solid rgba(76, 175, 80, .5);
+}
+
+.success-checkmark .check-icon::before, 
+.success-checkmark .check-icon::after {
+  content: '';
+  height: 100px;
+  position: absolute;
+  background: transparent;
+  transform: rotate(45deg);
+}
+
+.success-checkmark .check-icon .icon-line {
+  height: 5px;
+  background-color: #276221;
+  display: block;
+  border-radius: 2px;
+  position: absolute;
+  z-index: 10;
+}
+
+.success-checkmark .check-icon .icon-line.line-tip {
+  top: 43px;
+  left: 14px;
+  width: 25px;
+  transform: rotate(45deg);
+  animation: icon-line-tip 0.75s;
+}
+
+.success-checkmark .check-icon .icon-line.line-long {
+  top: 38px;
+  right: 8px;
+  width: 47px;
+  transform: rotate(-45deg);
+  animation: icon-line-long 0.75s;
+}
+
+.success-checkmark .check-icon .icon-circle {
+  top: -4px;
+  left: -4px;
+  position: absolute;
+  box-sizing: content-box;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 4px solid #276221;
+  z-index: 2;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes icon-line-tip {
+  0% { width: 0; left: 1px; top: 19px; }
+  54% { width: 0; left: 1px; top: 19px; }
+  70% { width: 50px; left: -8px; top: 37px; }
+  84% { width: 17px; left: 21px; top: 48px; }
+  100% { width: 25px; left: 14px; top: 43px; }
+}
+
+@keyframes icon-line-long {
+  0% { width: 0; right: 46px; top: 54px; }
+  65% { width: 0; right: 46px; top: 54px; }
+  84% { width: 55px; right: 0px; top: 35px; }
+  100% { width: 47px; right: 8px; top: 38px; }
 }
