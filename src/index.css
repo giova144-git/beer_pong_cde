@@ -7,13 +7,24 @@
   font-family: 'Inter', sans-serif;
 }
 
-body {
-  background: linear-gradient(135deg, #fceabb 0%, #f8b500 100%);
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
   min-height: 100vh;
+  min-height: 100dvh; 
+  background: linear-gradient(135deg, #fceabb 0%, #f8b500 100%);
+}
+
+body {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px;
+  /* El diseño de iOS: Padding dinámico para la isla dinámica / cámara frontal */
+  padding-top: max(20px, env(safe-area-inset-top));
+  padding-bottom: max(20px, env(safe-area-inset-bottom));
+  padding-left: max(20px, env(safe-area-inset-left));
+  padding-right: max(20px, env(safe-area-inset-right));
 }
 
 .glass-container {
@@ -43,6 +54,7 @@ body {
   align-items: center;
   gap: 8px;
   margin-bottom: 10px;
+  width: 100%;
 }
 
 .logo {
@@ -165,6 +177,7 @@ body {
   padding: 12px 0 12px 15px;
   font-weight: 600;
   color: #555;
+  white-space: nowrap;
 }
 
 .cedula-wrapper input {
@@ -274,6 +287,7 @@ body {
   font-size: 0.95rem;
   color: #333;
   line-height: 1.6;
+  margin: 0;
 }
 
 .icon-wrapper.alert-icon {
