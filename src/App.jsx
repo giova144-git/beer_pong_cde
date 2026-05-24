@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { supabase } from './lib/supabase';
 import './index.css';
 
-// Importamos el logo directamente para que funcione en GitHub Pages
+// Importamos el logo directamente para evitar problemas de rutas en GitHub Pages
 import logoClub from './logo_club.svg'; 
 
 const MAX_TEAMS = 16;
@@ -31,7 +31,7 @@ function App() {
   useEffect(() => {
     fetchSpots();
     
-    // COMPROBACIÓN DE CACHÉ
+    // COMPROBACIÓN DE CACHÉ (LocalStorage)
     const hasRegistered = localStorage.getItem('beerpong_registered');
     const savedTeam = localStorage.getItem('beerpong_team_name');
     
@@ -132,7 +132,7 @@ function App() {
         throw insertError;
       }
 
-      // GUARDAR EN CACHÉ (LocalStorage) TRAS ÉXITO
+      // GUARDAR EN CACHÉ DEL DISPOSITIVO
       localStorage.setItem('beerpong_registered', 'true');
       localStorage.setItem('beerpong_team_name', teamName.trim());
       
@@ -159,17 +159,20 @@ function App() {
         
         <header className="header-section">
           <div className="logo-container">
-            {/* Usamos la variable importada del logo */}
             <img src={logoClub} alt="Club Logo" className="logo" />
             <span className="club-name">CLUB DE EMPRENDIMIENTO</span>
           </div>
-          <h1 className="title">Beer Pong <span className="highlight">CDE</span></h1>
+          {/* Título corregido para evitar saltos de línea extraños */}
+          <h1 className="title">
+            <span className="text-nowrap">Beer Pong</span> <span className="highlight">CDE</span>
+          </h1>
           
           <div className={`spots-badge ${isFull ? 'spots-full' : ''}`}>
             {isFull ? '❌ CUPOS AGOTADOS' : `🏆 ${spotsAvailable} CUPOS DISPONIBLES`}
           </div>
         </header>
 
+        {/* PANTALLA 1: SI YA SE REGISTRÓ ANTES */}
         {alreadyRegistered ? (
           <div className="status-screen already-registered-view">
             <div className="icon-wrapper alert-icon">ℹ️</div>
@@ -183,6 +186,7 @@ function App() {
           </div>
         ) : 
         
+        /* PANTALLA 2: ÉXITO TRAS EL REGISTRO */
         isSuccess ? (
           <div className="status-screen success-view">
             <div className="success-checkmark">
@@ -205,6 +209,7 @@ function App() {
           </div>
         ) : 
         
+        /* PANTALLA 3: TORNEO LLENO */
         isFull ? (
           <div className="status-screen full-view">
             <h2>¡Torneo Lleno!</h2>
@@ -212,6 +217,7 @@ function App() {
           </div>
         ) : 
         
+        /* PANTALLA 4: FORMULARIO DE REGISTRO */
         (
           <form onSubmit={handleSubmit} className="glass-form">
             <div className="players-grid">
@@ -221,7 +227,7 @@ function App() {
                   type="text"
                   value={teamName}
                   onChange={(e) => setTeamName(e.target.value)}
-                  placeholder="Ej. Los Reyes del Vaso"
+                  placeholder="Ej. Low Cortisol Team"
                   required
                 />
               </div>
@@ -244,6 +250,7 @@ function App() {
             </div>
 
             <div className="players-grid">
+              {/* Jugador 1 */}
               <div className="player-card">
                 <h3>Jugador 1</h3>
                 <div className="input-group">
@@ -263,6 +270,7 @@ function App() {
                 </div>
               </div>
 
+              {/* Jugador 2 */}
               <div className="player-card">
                 <h3>Jugador 2</h3>
                 <div className="input-group">
